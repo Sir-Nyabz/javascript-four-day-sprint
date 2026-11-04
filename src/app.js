@@ -1,11 +1,15 @@
-const students = [
-    'Ama',
-    'Kojo',
-    'Yaw',
-    'Akosua',
-    'Kofi'
-]
+const students = ['Ama', 'Kojo', 'Yaw']
 
-console.log(students[0]) // Ama
-console.log(students[1]) // Kojo
-console.log(students[4]) // Kofi
+// Add an item to the end
+students.push('Akosua')
+
+// Remove the last item
+students.pop()
+
+// Add an item to the beginning
+students.unshift('Kofi')
+
+// Remove the first item
+students.shift()
+
+console.log(students)
