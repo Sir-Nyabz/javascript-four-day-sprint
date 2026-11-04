@@ -1,11 +1,17 @@
-students.forEach((student) => {
-    console.log(student)
+const passedScores = scores.filter((score) => {
+    return score >= 50
 })
 
-const scores = [45, 78, 90, 32, 65, 88]
+console.log(passedScores)
 
-const increasedScores = scores.map((score) => {
-    return score + 5
+const firstHighScore = scores.find((score) => {
+    return score >= 80
 })
 
-console.log(increasedScores)
+console.log(firstHighScore)
+
+const totalScore = scores.reduce((total, score) => {
+    return total + score
+}, 0)
+
+console.log(totalScore)
