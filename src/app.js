@@ -1,0 +1,1 @@
+console.log('JavaScript Practical Sprint has started!')
