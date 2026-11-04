@@ -1,10 +1,6 @@
-const price = 12.50
-const quantity = 3
+const firstNumber = '20'
+const secondNumber = '10'
 
-const subtotal = price * quantity
-const tax = subtotal * 0.08
-const total = subtotal + tax
+const result = Number(firstNumber) + Number(secondNumber)
 
-console.log('Subtotal:', subtotal)
-console.log('Tax:', tax)
-console.log('Total:', total)
+console.log(result)
