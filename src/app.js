@@ -1,15 +1,34 @@
-const employee = {
-  id: 101,
-  name: "Isaac Nyaabila",
-  department: "Information Technology",
-  salary: 5000,
-  isActive: true,
 
-  getDetails: function () {
-    return `Employee ID: ${this.id}
-Name: ${this.name}
-Department: ${this.department}
-Salary: GH₵${this.salary}
-Active: ${this.isActive}`;
-  },
-};
+
+import { Task } from './task.js'
+
+const task1 = new Task(
+    'Learn JavaScript',
+    'Practise arrays, objects and classes',
+    'high'
+)
+
+const task2 = new Task(
+    'Complete assignment',
+    'Finish the JavaScript exercises',
+    'medium'
+)
+
+console.log(task1.getDetails())
+console.log(task2.getDetails())
+
+
+task1.complete()
+
+console.log('After completing task:')
+console.log(task1.getDetails())
+
+task1.reopen()
+
+console.log('After reopening task:')
+console.log(task1.getDetails())
+
+task1.updateTitle('Master JavaScript')
+
+console.log('After updating title:')
+console.log(task1.getDetails())
