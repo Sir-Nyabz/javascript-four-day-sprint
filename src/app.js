@@ -1,20 +1,34 @@
-function fizzBuzz(limit) {
-    const results = []
+function calculateDiscountedCart(items, taxRate) {
+    let subtotalBeforeTax = 0
 
-    for (let number = 1; number <= limit; number++) {
-        if (number % 3 === 0 && number % 5 === 0) {
-            results.push('FizzBuzz')
-        } else if (number % 3 === 0) {
-            results.push('Fizz')
-        } else if (number % 5 === 0) {
-            results.push('Buzz')
-        } else {
-            results.push(number)
-        }
+    for (const item of items) {
+        const lineTotal = calculateLineTotal(
+            item.price,
+            item.quantity
+        )
+
+        const discountedTotal =
+            item.quantity > 5
+                ? lineTotal * 0.95
+                : lineTotal
+
+        subtotalBeforeTax += discountedTotal
     }
 
-    return results
+    const tax = subtotalBeforeTax * taxRate
+
+    return {
+        subtotalBeforeTax,
+        tax,
+        total: subtotalBeforeTax + tax
+    }
 }
 
-console.log(fizzBuzz(15))
-console.log(fizzBuzz(16))
+const cart = [
+    { name: 'Books', price: 10, quantity: 6 },
+    { name: 'Pens', price: 5, quantity: 2 }
+]
+
+const receipt = calculateDiscountedCart(cart, 0.08)
+
+console.log(receipt)
