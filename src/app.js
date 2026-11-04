@@ -1,11 +1,10 @@
-student.age = 21
-student.level = 400
+const student = {
+    name: 'Ama',
+    programme: 'Computer Science',
 
-console.log(student)
+    introduce() {
+        return `My name is ${this.name} and I study ${this.programme}.`
+    }
+}
 
-
-student.email = 'ama@example.com'
-
-delete student.level
-
-console.log(student)
+console.log(student.introduce())
