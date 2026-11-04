@@ -1,15 +1,20 @@
-const prices = [5, 12, 25, 8, 30]
+function fizzBuzz(limit) {
+    const results = []
 
-let total = 0
-let countAbove20 = 0
-
-for (const price of prices) {
-    total += price
-
-    if (price > 20) {
-        countAbove20++
+    for (let number = 1; number <= limit; number++) {
+        if (number % 3 === 0 && number % 5 === 0) {
+            results.push('FizzBuzz')
+        } else if (number % 3 === 0) {
+            results.push('Fizz')
+        } else if (number % 5 === 0) {
+            results.push('Buzz')
+        } else {
+            results.push(number)
+        }
     }
+
+    return results
 }
 
-console.log('Total:', total)
-console.log('Prices above 20:', countAbove20)
+console.log(fizzBuzz(15))
+console.log(fizzBuzz(16))
