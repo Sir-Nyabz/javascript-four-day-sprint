@@ -1,10 +1,15 @@
-const student = {
-    name: 'Ama',
-    programme: 'Computer Science',
+const employee = {
+  id: 101,
+  name: "Isaac Nyaabila",
+  department: "Information Technology",
+  salary: 5000,
+  isActive: true,
 
-    introduce() {
-        return `My name is ${this.name} and I study ${this.programme}.`
-    }
-}
-
-console.log(student.introduce())
+  getDetails: function () {
+    return `Employee ID: ${this.id}
+Name: ${this.name}
+Department: ${this.department}
+Salary: GH₵${this.salary}
+Active: ${this.isActive}`;
+  },
+};
