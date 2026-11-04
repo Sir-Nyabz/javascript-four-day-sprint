@@ -1,5 +1,11 @@
-const students = ['Ama', 'Kojo', 'Yaw', 'Akosua']
+students.forEach((student) => {
+    console.log(student)
+})
 
-for (let i = 0; i < students.length; i++) {
-    console.log(students[i])
-}
+const scores = [45, 78, 90, 32, 65, 88]
+
+const increasedScores = scores.map((score) => {
+    return score + 5
+})
+
+console.log(increasedScores)
