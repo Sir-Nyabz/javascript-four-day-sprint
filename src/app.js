@@ -1,15 +1,5 @@
-const students = ['Ama', 'Kojo', 'Yaw']
+const students = ['Ama', 'Kojo', 'Yaw', 'Akosua']
 
-// Add an item to the end
-students.push('Akosua')
-
-// Remove the last item
-students.pop()
-
-// Add an item to the beginning
-students.unshift('Kofi')
-
-// Remove the first item
-students.shift()
-
-console.log(students)
+for (let i = 0; i < students.length; i++) {
+    console.log(students[i])
+}
