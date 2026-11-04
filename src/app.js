@@ -1,17 +1,7 @@
-const passedScores = scores.filter((score) => {
-    return score >= 50
-})
-
-console.log(passedScores)
-
-const firstHighScore = scores.find((score) => {
-    return score >= 80
-})
-
-console.log(firstHighScore)
-
-const totalScore = scores.reduce((total, score) => {
-    return total + score
-}, 0)
-
-console.log(totalScore)
+const products = [
+    { name: 'Laptop', price: 3500, quantity: 2 },
+    { name: 'Mouse', price: 80, quantity: 5 },
+    { name: 'Keyboard', price: 150, quantity: 3 },
+    { name: 'Monitor', price: 1200, quantity: 2 },
+    { name: 'USB Drive', price: 60, quantity: 10 }
+]
