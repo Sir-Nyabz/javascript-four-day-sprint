@@ -1,7 +1,14 @@
-const amount = Number('abc')
+function convertMinutes(totalMinutes) {
+    const hours = Math.floor(totalMinutes / 60)
+    const remainingMinutes = totalMinutes % 60
 
-if (Number.isFinite(amount)) {
-    console.log(amount * 2)
-} else {
-    console.log('Invalid amount')
+    return {
+        hours,
+        minutes: remainingMinutes
+    }
 }
+
+const result = convertMinutes(137)
+
+console.log(result)
+console.log(`${result.hours} hours and ${result.minutes} minutes`)
