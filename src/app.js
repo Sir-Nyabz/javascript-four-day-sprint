@@ -1,7 +1,11 @@
-console.log(student.name)
-console.log(student.age)
-console.log(student.programme)
+student.age = 21
+student.level = 400
+
+console.log(student)
 
 
-console.log(student['name'])
-console.log(student['programme'])
+student.email = 'ama@example.com'
+
+delete student.level
+
+console.log(student)
