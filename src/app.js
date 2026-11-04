@@ -1,14 +1,24 @@
-function convertMinutes(totalMinutes) {
-    const hours = Math.floor(totalMinutes / 60)
-    const remainingMinutes = totalMinutes % 60
+function gradeLabel(score) {
+    if (!Number.isFinite(score) || score < 0 || score > 100) {
+        return 'Invalid'
+    }
 
-    return {
-        hours,
-        minutes: remainingMinutes
+    if (score >= 90) {
+        return 'A'
+    } else if (score >= 80) {
+        return 'B'
+    } else if (score >= 70) {
+        return 'C'
+    } else if (score >= 60) {
+        return 'D'
+    } else {
+        return 'F'
     }
 }
 
-const result = convertMinutes(137)
-
-console.log(result)
-console.log(`${result.hours} hours and ${result.minutes} minutes`)
+console.log(gradeLabel(89))
+console.log(gradeLabel(90))
+console.log(gradeLabel(0))
+console.log(gradeLabel(100))
+console.log(gradeLabel(-1))
+console.log(gradeLabel(101))
