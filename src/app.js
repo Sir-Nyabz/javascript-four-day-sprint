@@ -1,6 +1,7 @@
-const firstNumber = '20'
-const secondNumber = '10'
+const amount = Number('abc')
 
-const result = Number(firstNumber) + Number(secondNumber)
-
-console.log(result)
+if (Number.isFinite(amount)) {
+    console.log(amount * 2)
+} else {
+    console.log('Invalid amount')
+}
