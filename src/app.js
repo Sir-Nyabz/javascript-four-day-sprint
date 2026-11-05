@@ -1,4 +1,5 @@
-import { TaskManager } from './task.js'
+import { Task, TaskManager } from './task.js'
+import { loadTasks, saveTasks } from './storage.js'
 
 const manager = new TaskManager()
 
@@ -12,6 +13,7 @@ const searchInput = document.querySelector('#searchInput')
 const filterSelect = document.querySelector('#filterSelect')
 const message = document.querySelector('#message')
 const emptyMessage = document.querySelector('#emptyMessage')
+
 
 // Display tasks on the webpage
 function renderTasks() {
@@ -104,7 +106,7 @@ taskForm.addEventListener('submit', (event) => {
 
     try {
         manager.addTask(title, description, priority)
-
+saveTasks(manager.getAllTasks())
         taskForm.reset()
         message.textContent = 'Task added successfully!'
 
@@ -142,6 +144,7 @@ taskList.addEventListener('click', (event) => {
             manager.deleteTask(id)
         }
 
+        saveTasks(manager.getAllTasks())
         renderTasks()
     } catch (error) {
         message.textContent = error.message
@@ -156,3 +159,19 @@ filterSelect.addEventListener('change', renderTasks)
 
 // Display initial tasks
 renderTasks()
+
+const savedTasks = loadTasks()
+
+manager.tasks = savedTasks.map((savedTask) => {
+    const task = new Task(
+        savedTask.title,
+        savedTask.description,
+        savedTask.priority
+    )
+
+    task.id = savedTask.id
+    task.completed = savedTask.completed
+    task.createdAt = savedTask.createdAt
+
+    return task
+})
