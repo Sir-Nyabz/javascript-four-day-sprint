@@ -27,3 +27,17 @@ Explain why conditions are important.
 
 ### Next steps
 Prepare for arrays, objects and object-oriented programming.
+
+## Day 3 – DOM Manipulation and Browser Interaction
+
+### What I learned
+I learned how to manipulate HTML elements using the Document Object Model (DOM). I practised selecting elements, changing webpage content, handling events and collecting information from forms. I also learned how to create HTML elements dynamically and display information from my JavaScript Task Manager. Additionally, I learned how to use localStorage to save and retrieve tasks so that they remain available after refreshing the browser.
+
+### What I found difficult
+The most difficult part was connecting the Task Manager data engine to the HTML interface. I initially found it challenging to handle button events for dynamically created tasks and to understand how localStorage stores and retrieves JavaScript data.
+
+### How I solved it
+I approached the problem by testing each feature separately. I used browser Developer Tools and console messages to identify errors. I also learned to use event delegation so that one event listener could handle clicks on dynamically created buttons. To solve the data storage problem, I used JSON.stringify() to save task information and JSON.parse() to retrieve it. I then reconstructed the saved information as Task objects so their methods would remain available.
+
+### Key takeaway
+I learned how JavaScript connects webpage elements with application logic. I also gained practical experience building an interactive application and storing information in the browser.
