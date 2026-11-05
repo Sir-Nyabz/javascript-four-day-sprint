@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Task Manager</title>
+    <title>Task Form Validation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <main class="container">
-        <h1>My Task Manager</h1>
+        <h1>Task Manager</h1>
 
         <form id="taskForm">
+
+            <!-- Task title -->
             <div class="form-group">
                 <label for="taskTitle">Task Title</label>
                 <input
                     type="text"
                     id="taskTitle"
                     placeholder="Enter task title"
-                    required
                 >
             </div>
 
+            <!-- Task description -->
             <div class="form-group">
                 <label for="taskDescription">Description</label>
                 <textarea
@@ -29,6 +31,7 @@
                 ></textarea>
             </div>
 
+            <!-- Task priority -->
             <div class="form-group">
                 <label for="taskPriority">Priority</label>
                 <select id="taskPriority">
@@ -38,12 +41,24 @@
                 </select>
             </div>
 
-            <button type="submit">Add Task</button>
-        </form>
+            <!-- Due date -->
+            <div class="form-group">
+                <label for="dueDate">Due Date</label>
+                <input
+                    type="date"
+                    id="dueDate"
+                >
+            </div>
 
-        <p id="message"></p>
+            <!-- Submit button -->
+            <button type="submit">Submit Task</button>
+
+            <!-- Validation message -->
+            <p id="message" role="status"></p>
+
+        </form>
     </main>
 
-    <script type="module" src="src/app.js"></script>
+    <script src="src/app.js"></script>
 </body>
 </html>
