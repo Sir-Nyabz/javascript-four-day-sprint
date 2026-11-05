@@ -1,24 +1,28 @@
-// 1. Select all four HTML elements
-const heading = document.getElementById("heading");
-const paragraph = document.getElementById("paragraph");
-const button = document.getElementById("submitButton");
-const input = document.getElementById("userInput");
+const taskForm = document.querySelector('#taskForm')
+const taskTitle = document.querySelector('#taskTitle')
+const taskDescription = document.querySelector('#taskDescription')
+const taskPriority = document.querySelector('#taskPriority')
+const message = document.querySelector('#message')
 
-// Select the output paragraph
-const output = document.getElementById("output");
+taskForm.addEventListener('submit', (event) => {
+    event.preventDefault()
 
-// 2. Change the heading text
-heading.textContent = "Welcome to JavaScript DOM Manipulation";
+    const title = taskTitle.value.trim()
+    const description = taskDescription.value.trim()
+    const priority = taskPriority.value
 
-// 3. Change the paragraph text
-paragraph.textContent = "You are learning how JavaScript interacts with HTML.";
+    if (!title) {
+        message.textContent = 'Please enter a task title.'
+        return
+    }
 
-// 4. Change the button text
-button.textContent = "Display Name";
+    console.log({
+        title,
+        description,
+        priority
+    })
 
-// 5. Display the input text when the button is clicked
-button.addEventListener("click", function () {
-    const enteredText = input.value;
+    message.textContent = 'Task information collected successfully!'
 
-    output.textContent = "You entered: " + enteredText;
-});
+    taskForm.reset()
+})

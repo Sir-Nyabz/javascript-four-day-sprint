@@ -3,20 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge 9 - DOM Manipulation</title>
+    <title>JavaScript Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <main class="container">
+        <h1>My Task Manager</h1>
 
-    <h1 id="heading">Original Heading</h1>
+        <form id="taskForm">
+            <div class="form-group">
+                <label for="taskTitle">Task Title</label>
+                <input
+                    type="text"
+                    id="taskTitle"
+                    placeholder="Enter task title"
+                    required
+                >
+            </div>
 
-    <p id="paragraph">This is the original paragraph.</p>
+            <div class="form-group">
+                <label for="taskDescription">Description</label>
+                <textarea
+                    id="taskDescription"
+                    placeholder="Enter task description"
+                ></textarea>
+            </div>
 
-    <input type="text" id="userInput" placeholder="Enter your name">
+            <div class="form-group">
+                <label for="taskPriority">Priority</label>
+                <select id="taskPriority">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
 
-    <button id="submitButton">Submit</button>
+            <button type="submit">Add Task</button>
+        </form>
 
-    <p id="output"></p>
+        <p id="message"></p>
+    </main>
 
-    <script src="challenge-9.js"></script>
+    <script type="module" src="src/app.js"></script>
 </body>
 </html>
