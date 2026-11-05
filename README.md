@@ -31,3 +31,26 @@ I solved these difficulties by breaking the code into smaller sections and testi
 ### Key takeaway
 I learned how to organise related data and behaviour using classes and objects. I also gained practical experience building a reusable data management system.
 
+## Day 4 – Promises, Async/Await, Fetch API and Capstone Project
+
+### What I learned
+
+I learned how JavaScript handles asynchronous operations using callbacks, Promises, async/await, and the Fetch API. I also learned how to retrieve information from external APIs and handle errors using try...catch. I applied these concepts by integrating API functionality into my Focus Board project.
+
+### Challenges I encountered
+
+I encountered challenges understanding how Promises work, using async/await correctly, and handling errors when retrieving information from an API. Integrating the API functionality into the existing Focus Board also required careful attention to the project structure.
+
+### How I solved the challenges
+
+I addressed these challenges by practising with smaller examples, examining the browser console, and testing API requests independently before integrating them into the application.
+
+### Key takeaways
+
+I learned that asynchronous JavaScript makes it possible to perform operations such as retrieving information from external servers without blocking the application. I also gained practical experience combining different JavaScript concepts to build a functional application.
+
+### Project completed
+
+Focus Board – a task management application with localStorage persistence and&#x20;
+
+external API integration.
