@@ -1,22 +1,24 @@
-const heading = document.querySelector('h1')
-const welcomeMessage = document.querySelector('#welcomeMessage')
-const button = document.querySelector('#changeMessageButton')
-const dateDisplay = document.querySelector('#dateDisplay')
+// 1. Select all four HTML elements
+const heading = document.getElementById("heading");
+const paragraph = document.getElementById("paragraph");
+const button = document.getElementById("submitButton");
+const input = document.getElementById("userInput");
 
-console.log(heading)
-console.log(welcomeMessage)
-console.log(button)
+// Select the output paragraph
+const output = document.getElementById("output");
 
-heading.textContent = 'My Personal Task Manager'
+// 2. Change the heading text
+heading.textContent = "Welcome to JavaScript DOM Manipulation";
 
-welcomeMessage.textContent =
-    'I am learning how to manipulate the DOM with JavaScript.'
+// 3. Change the paragraph text
+paragraph.textContent = "You are learning how JavaScript interacts with HTML.";
 
-dateDisplay.textContent = new Date().toDateString()
+// 4. Change the button text
+button.textContent = "Display Name";
 
-heading.textContent = 'My Personal Task Manager'
+// 5. Display the input text when the button is clicked
+button.addEventListener("click", function () {
+    const enteredText = input.value;
 
-welcomeMessage.textContent =
-    'I am learning how to manipulate the DOM with JavaScript.'
-
-dateDisplay.textContent = new Date().toDateString()
+    output.textContent = "You entered: " + enteredText;
+});
