@@ -1,5 +1,6 @@
 import { Task, TaskManager } from './task.js'
 import { loadTasks, saveTasks } from './storage.js'
+import { renderTasks } from './api.js'
 
 const manager = new TaskManager()
 

@@ -49,6 +49,40 @@
             </form>
         </section>
 
+        <section class="dashboard">
+    <div class="summary-card">
+        <h3>Total Tasks</h3>
+        <p id="total-tasks">0</p>
+    </div>
+
+    <div class="summary-card">
+        <h3>Completed</h3>
+        <p id="completed-tasks">0</p>
+    </div>
+
+    <div class="summary-card">
+        <h3>Pending</h3>
+        <p id="pending-tasks">0</p>
+    </div>
+</section>
+
+        <section class="suggestions">
+    <h2>Suggested Tasks</h2>
+
+    <button id="load-suggestions">
+        Load Suggested Tasks
+    </button>
+
+    <div id="loading-indicator" class="loading hidden">
+        <span class="spinner"></span>
+        <span>Loading suggested tasks...</span>
+    </div>
+
+    <p id="api-message" role="status" aria-live="polite"></p>
+
+    <div id="suggested-tasks"></div>
+</section>
+
         <section class="task-section">
             <h2>My Tasks</h2>
 
@@ -75,5 +109,6 @@
     </main>
 
     <script type="module" src="src/app.js"></script>
+    <script type="module" src="src/api-demo.js"></script>
 </body>
 </html>
