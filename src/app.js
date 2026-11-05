@@ -1,78 +1,158 @@
-// Select HTML elements
+import { TaskManager } from './task.js'
+
+const manager = new TaskManager()
+
 const taskForm = document.querySelector('#taskForm')
 const taskTitle = document.querySelector('#taskTitle')
 const taskDescription = document.querySelector('#taskDescription')
 const taskPriority = document.querySelector('#taskPriority')
-const dueDate = document.querySelector('#dueDate')
+const taskList = document.querySelector('#taskList')
+const taskSummary = document.querySelector('#taskSummary')
+const searchInput = document.querySelector('#searchInput')
+const filterSelect = document.querySelector('#filterSelect')
 const message = document.querySelector('#message')
+const emptyMessage = document.querySelector('#emptyMessage')
 
-// Set today's date as the minimum allowed date
-const today = new Date()
-const localToday = [
-    today.getFullYear(),
-    String(today.getMonth() + 1).padStart(2, '0'),
-    String(today.getDate()).padStart(2, '0')
-].join('-')
+// Display tasks on the webpage
+function renderTasks() {
+    const searchTerm = searchInput.value.trim().toLowerCase()
+    const filter = filterSelect.value
 
-dueDate.min = localToday
+    let tasks = manager.getAllTasks()
 
-// Listen for form submission
+    if (filter === 'pending') {
+        tasks = tasks.filter((task) => !task.completed)
+    }
+
+    if (filter === 'completed') {
+        tasks = tasks.filter((task) => task.completed)
+    }
+
+    if (searchTerm) {
+        tasks = tasks.filter((task) =>
+            task.title.toLowerCase().includes(searchTerm)
+        )
+    }
+
+    taskList.replaceChildren()
+
+    tasks.forEach((task) => {
+        const taskElement = document.createElement('article')
+        taskElement.className = task.completed
+            ? 'task-item completed'
+            : 'task-item'
+
+        const title = document.createElement('h3')
+        title.textContent = task.title
+
+        const description = document.createElement('p')
+        description.textContent = task.description || 'No description provided.'
+
+        const priority = document.createElement('div')
+        priority.className = 'task-meta'
+        priority.textContent =
+            `Priority: ${task.priority} | Status: ${task.getStatus()}`
+
+        const actions = document.createElement('div')
+        actions.className = 'task-actions'
+
+        const completeButton = document.createElement('button')
+        completeButton.type = 'button'
+        completeButton.className = 'complete-button'
+        completeButton.dataset.action = 'complete'
+        completeButton.dataset.id = task.id
+        completeButton.textContent = task.completed
+            ? 'Reopen'
+            : 'Complete'
+
+        const deleteButton = document.createElement('button')
+        deleteButton.type = 'button'
+        deleteButton.className = 'delete-button'
+        deleteButton.dataset.action = 'delete'
+        deleteButton.dataset.id = task.id
+        deleteButton.textContent = 'Delete'
+
+        actions.append(completeButton, deleteButton)
+
+        taskElement.append(title, description, priority, actions)
+
+        taskList.append(taskElement)
+    })
+
+    emptyMessage.hidden = tasks.length > 0
+
+    const total = manager.getAllTasks().length
+    const completed = manager.getCompletedTasks().length
+    const pending = manager.getPendingTasks().length
+
+    taskSummary.textContent =
+        `Total: ${total} | Completed: ${completed} | Pending: ${pending}`
+}
+
+// Add a task
 taskForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    // Collect form values
     const title = taskTitle.value.trim()
     const description = taskDescription.value.trim()
     const priority = taskPriority.value
-    const selectedDate = dueDate.value
 
-    // Reset previous message
-    message.textContent = ''
-    message.className = ''
-
-    // Validate task title
     if (title.length < 3) {
-        message.textContent =
-            'Error: Task title must contain at least 3 characters.'
-
-        message.className = 'error'
+        message.textContent = 'Task title must contain at least 3 characters.'
         return
     }
 
-    // Validate due date
-    if (!selectedDate) {
-        message.textContent =
-            'Error: Please select a due date.'
+    try {
+        manager.addTask(title, description, priority)
 
-        message.className = 'error'
-        return
+        taskForm.reset()
+        message.textContent = 'Task added successfully!'
+
+        renderTasks()
+    } catch (error) {
+        message.textContent = error.message
     }
-
-    // Check whether due date is in the past
-    if (selectedDate < localToday) {
-        message.textContent =
-            'Error: Due date cannot be in the past.'
-
-        message.className = 'error'
-        return
-    }
-
-    // Create task object
-    const task = {
-        title: title,
-        description: description,
-        priority: priority,
-        dueDate: selectedDate
-    }
-
-    // Display successful submission
-    console.log(task)
-
-    message.textContent =
-        'Success! Your task has been submitted successfully.'
-
-    message.className = 'success'
-
-    // Clear form
-    taskForm.reset()
 })
+
+// Handle task buttons using event delegation
+taskList.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-action]')
+
+    if (!button) return
+
+    const id = Number(button.dataset.id)
+    const action = button.dataset.action
+
+    try {
+        if (action === 'complete') {
+            const task = manager.findTask(id)
+
+            if (!task) {
+                throw new Error('Task not found')
+            }
+
+            if (task.completed) {
+                task.reopen()
+            } else {
+                manager.completeTask(id)
+            }
+        }
+
+        if (action === 'delete') {
+            manager.deleteTask(id)
+        }
+
+        renderTasks()
+    } catch (error) {
+        message.textContent = error.message
+    }
+})
+
+// Search tasks
+searchInput.addEventListener('input', renderTasks)
+
+// Filter tasks
+filterSelect.addEventListener('change', renderTasks)
+
+// Display initial tasks
+renderTasks()
